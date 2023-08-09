@@ -1,0 +1,9 @@
+<div class="search-bar">
+  <input
+    #myInput
+    type="text"
+    placeholder="Search for manga..."
+    (keyup.enter)="search(myInput.value)"
+  />
+  <button (click)="search(myInput.value)" class="au-btn-submit">Search</button>
+</div>
