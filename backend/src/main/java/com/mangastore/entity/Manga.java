@@ -2,6 +2,7 @@ package com.mangastore.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,6 +22,7 @@ public class Manga {
     @Column(name = "manga_id")
     private Long id;
 
+    @NotBlank
     @Column(name = "title")
     private String title;
 
@@ -28,15 +30,19 @@ public class Manga {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    @NotBlank
     @Column(name = "description")
     private String description;
 
+    @NotBlank
     @Column(name = "price")
     private BigDecimal price;
 
+    @NotBlank
     @Column(name = "image_url")
     private String imageUrl;
 
+    @NotBlank
     @Column(name = "created_at")
     @CreationTimestamp
     private Date createdAt;

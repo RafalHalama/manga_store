@@ -2,6 +2,7 @@ package com.mangastore.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,12 +24,15 @@ public class Author {
     @Column(name = "author_id")
     private Long id;
 
+    @NotBlank
     @Column(name="name")
     private String name;
 
+    @NotBlank
     @Column(name = "age")
     private int age;
 
+    @NotBlank
     @Column(name = "image_url")
     private String imageUrl;
 
