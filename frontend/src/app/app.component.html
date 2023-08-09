@@ -1,4 +1,22 @@
-<div class="container">
-  <h1 class="mt-3 mb-3">Products</h1>
-  <app-manga-list></app-manga-list>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <app-category-list></app-category-list>
+      <a routerLink="/manga" routerLinkActive="active-link">
+        <img
+          src="/assets/images/manga/shop.jpg"
+          alt="Manga Link"
+          class="bottom-link-image"
+        />
+      </a>
+    </div>
+
+    <div class="col-md-10">
+      <app-search></app-search>
+      <app-shopping-cart></app-shopping-cart>
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>

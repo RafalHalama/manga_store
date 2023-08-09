@@ -1,0 +1,14 @@
+<div>
+  <nav class="navbar">
+    <ul>
+      <li *ngFor="let category of categoryList">
+        <a
+          routerLink="/category/{{ category.id }}"
+          routerLinkActive="active-link"
+        >
+          {{ category.categoryName }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

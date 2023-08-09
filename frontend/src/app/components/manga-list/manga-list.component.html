@@ -1,21 +1,33 @@
-<table class="table">
-  <thead class="table-dark">
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Price</th>
-    </tr>
-  </thead>
+<div class="main-container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let manga of mangaList">
+      <div class="book-card" (click)="showMangaDetail(manga)">
+        <img
+          src="assets/images/manga/{{ manga.imageUrl }}"
+          alt="{{ manga.title }}"
+        />
+        <h4>{{ manga.title }}</h4>
+        <p>Price: {{ manga.price | currency }}</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <tr *ngFor="let manga of mangaList">
-      <td class="align-middle">
-        <img src="{{ manga.imageUrl }}" height="100" />
-      </td>
-      <td class="align-middle">{{ manga.title }}</td>
-      <td class="align-middle">
-        {{ manga.price | currency : "USD" }}
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="row2">
+  <div class="col-md-8"></div>
+  <div class="col-md-4">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item" *ngFor="let page of paginationNum">
+          <a
+            class="page-link"
+            (click)="changePage(page)"
+            [class.active]="currentPage === page"
+          >
+            {{ page }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
