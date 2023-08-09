@@ -2,10 +2,12 @@ package com.mangastore.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import java.util.Set;
 
@@ -22,6 +24,7 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
 
+    @NotBlank
     @Column(name = "category_name")
     private String categoryName;
 
