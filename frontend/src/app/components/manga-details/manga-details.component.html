@@ -1,0 +1,25 @@
+<div class="container" *ngIf="selectedManga">
+  <img
+    class="book-detail-img"
+    src="assets/images/manga/{{ selectedManga.imageUrl }}"
+  />
+
+  <h3>{{ selectedManga.title }}</h3>
+  <div>{{ selectedManga.price | currency : "USD" }}</div>
+  <button (click)="addToCart(selectedManga)" class="btn btn-primary btn-sm">
+    Add to cart
+  </button>
+  <button
+    *ngIf="showRemove"
+    (click)="removeFromCart(selectedManga)"
+    class="btn btn-primary btn-sm"
+  >
+    Remove from cart
+  </button>
+
+  <hr />
+  <h4>Description</h4>
+  <p>{{ selectedManga.description }}</p>
+
+  <a routerLink="/manga" class="mt-5">Back to Manga List</a>
+</div>
