@@ -1,0 +1,63 @@
+<div class="cart-container">
+  <table class="table table-bordered cart-table">
+    <thead>
+      <tr>
+        <th>Product Image</th>
+        <th>Product Detail</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>
+          <img
+            src="assets/images/manga/{{ item.imageUrl }}"
+            alt="Product Image"
+            class="product-image"
+          />
+        </td>
+        <td class="product-details">
+          <p>Quantity: {{ item.quantity }}</p>
+          <p>Price: {{ item.unitPrice | currency }}</p>
+        </td>
+        <td class="quantity-controls">
+          <div class="quantity-buttons">
+            <button
+              (click)="incrementQuantity(item)"
+              class="btn btn-primary btn-sm"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button
+              (click)="decrementQuantity(item.mangaId)"
+              class="btn btn-primary btn-sm"
+            >
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+          <p class="subtotal">
+            Subtotal:
+            {{ item.quantity * item.unitPrice | currency : "USD" }}
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td class="total">
+          <p>Total Quantity: {{ totalQuantity }}</p>
+          <p>Total Price: {{ totalPrice | currency }}</p>
+          <div *ngIf="cartItems.length > 0" class="checkout-button">
+            <a routerLink="/checkout" class="btn btn-primary"
+              >Proceed to Checkout</a
+            >
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="cartItems.length === 0" class="empty-cart-alert">
+  Your shopping cart is empty.
+</div>

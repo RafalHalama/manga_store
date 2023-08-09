@@ -1,0 +1,29 @@
+<div class="shopping-cart">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <a routerLink="/shoppingcart" routerLinkActive="active-link">
+    <span class="shopping-cart-icon">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    </span>
+  </a>
+  <div class="total">
+    {{ totalPrice | currency }}
+    <span>{{ totalQuantity }}</span>
+    {{ email }}
+  </div>
+  <div class="login-register-links">
+    <span *ngIf="!email"
+      ><a routerLink="/login" routerLinkActive="active-link">Login</a></span
+    >
+    <span *ngIf="email"
+      ><a (click)="logout()" routerLink="/manga" routerLinkActive="active-link"
+        >Logout</a
+      ></span
+    >
+    <span
+      ><a *ngIf="!email" routerLink="/register" routerLinkActive="active-link"
+        >Register</a
+      ></span
+    >
+  </div>
+</div>

@@ -1,3 +1,4 @@
+
 package com.mangastore.dto;
 
 import lombok.AllArgsConstructor;
