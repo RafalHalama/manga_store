@@ -1,0 +1,86 @@
+<form
+  class="form-horizontal"
+  [formGroup]="checkoutForm"
+  (ngSubmit)="onSubmit()"
+>
+  <fieldset>
+    <legend>Checkout</legend>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Name:</label>
+      <div class="col-md-4">
+        <input
+          id="textinput"
+          name="textinput"
+          type="text"
+          class="form-control input-md"
+          type="text"
+          formControlName="name"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Email:</label>
+      <div class="col-md-4">
+        <input
+          id="textinput"
+          name="textinput"
+          type="text"
+          class="form-control input-md"
+          type="email"
+          formControlName="email"
+        />
+        <span
+          class="help-block"
+          *ngIf="checkoutForm.get('email')?.hasError('customEmailValidator')"
+        >
+          Invalid email domain.
+        </span>
+      </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Address:</label>
+      <div class="col-md-4">
+        <input
+          id="textinput"
+          name="textinput"
+          type="text"
+          class="form-control input-md"
+          type="text"
+          formControlName="street"
+        />
+      </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic"
+        >Delivery type:</label
+      >
+      <div class="col-md-4">
+        <select id="selectbasic" name="selectbasic" class="form-control">
+          <option value="1">UPS</option>
+          <option value="2">DTC</option>
+        </select>
+      </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+      <div class="col-md-4">
+        <button
+          id="singlebutton"
+          name="singlebutton"
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="checkoutForm.invalid"
+        >
+          Purchase
+        </button>
+      </div>
+    </div>
+  </fieldset>
+</form>
