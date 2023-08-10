@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -18,7 +24,11 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private authService: AuthGuardService
   ) {}
+
   ngOnInit(): void {
+    this.load();
+  }
+  load() {
     this.subscription = this.cartService.totalPrice.subscribe(
       (data) => (this.totalPrice = data)
     );
@@ -28,8 +38,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     );
     this.authService.email.subscribe((data) => (this.email = data));
   }
-
   logout() {
+    this.cartService.cartItems = [];
+    this.cartService.cartSubject.next(this.cartService.cartItems);
+    this.cartService.total();
     this.authService.logout();
   }
 

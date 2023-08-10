@@ -44,10 +44,10 @@ public class User {
     @Column(name = "role")
     private String role;
 
-   /* @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Orders> orders = new HashSet<>();*/
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Orders> orders = new HashSet<>();
 
-   /* public void add(Orders orders) {
+   public void add(Orders orders) {
 
         if (orders != null) {
 
@@ -58,6 +58,6 @@ public class User {
             this.orders.add(orders);
             orders.setUser(this);
         }
-    }*/
+    }
 
 }

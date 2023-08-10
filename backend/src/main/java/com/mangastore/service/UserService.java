@@ -5,12 +5,15 @@ import com.mangastore.dao.UserRepository;
 import com.mangastore.dto.LoginDTO;
 import com.mangastore.dto.LoginMessage;
 import com.mangastore.dto.UserDTO;
+import com.mangastore.entity.Orders;
 import com.mangastore.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -31,7 +34,8 @@ public class UserService {
                 userDTO.getUsername(),
                 userDTO.getEmail(),
                 this.passwordEncoder.encode(userDTO.getPassword()),
-                userDTO.getRole()
+                userDTO.getRole(),
+                new HashSet<>()
         );
 
         userRepository.save(user);
@@ -65,4 +69,8 @@ public class UserService {
 
     }
 
+
+    public Set<Orders> getOrders(String email) {
+        return this.userRepository.findByEmail(email).getOrders();
+    }
 }

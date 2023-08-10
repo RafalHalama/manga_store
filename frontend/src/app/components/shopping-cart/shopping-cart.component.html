@@ -9,7 +9,9 @@
   <div class="total">
     {{ totalPrice | currency }}
     <span>{{ totalQuantity }}</span>
-    {{ email }}
+    <a routerLink="/orderHistory" routerLinkActive="active-link">
+      {{ email }}</a
+    >
   </div>
   <div class="login-register-links">
     <span *ngIf="!email"

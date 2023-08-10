@@ -29,6 +29,7 @@ export class AuthGuardService {
     this.authenticated = true;
     this.userRoles = ['ROLE_USER'];
     this.emailSubject.next(email);
+    this._email = email;
     this.storeAuthData();
   }
 

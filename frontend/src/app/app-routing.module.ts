@@ -8,6 +8,7 @@ import { RedirectComponent } from './components/redirect/redirect.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './common/authguard';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'manga', pathMatch: 'full' },
@@ -35,6 +36,12 @@ const routes: Routes = [
   {
     path: 'redirect',
     component: RedirectComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRoles: ['ROLE_USER'] },
+  },
+  {
+    path: 'orderHistory',
+    component: OrderHistoryComponent,
     canActivate: [AuthGuard],
     data: { requiredRoles: ['ROLE_USER'] },
   },

@@ -1,0 +1,33 @@
+<div class="order-history-container" *ngIf="data">
+  <h2>Order History</h2>
+  <div class="order-list">
+    <div *ngFor="let order of data" class="order-item">
+      <div class="order-header">
+        <span class="order-date">{{ order.dateCreated | date }}</span>
+        <span class="order-total">Total: ${{ order.totalPrice }}</span>
+      </div>
+      <div class="order-details">
+        <div class="order-summary">
+          <p>Total Quantity: {{ order.totalQuantity }}</p>
+        </div>
+        <div class="order-items">
+          <h3>Order Items</h3>
+          <ul>
+            <li
+              *ngFor="let item of order.orderItems"
+              class="order-item-details"
+            >
+              <img
+                src="assets/images/manga/{{ item.imageUrl }}"
+                class="item-image"
+              />
+              <span class="item-details">
+                (Quantity: {{ item.quantity }})
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

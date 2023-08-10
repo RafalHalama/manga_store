@@ -1,5 +1,6 @@
 package com.mangastore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -47,9 +48,10 @@ public class Orders {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
     private Set<OrderItem> orderItems = new HashSet<>();
 
-    /*@ManyToOne
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;*/
+    private User user;
 
     public void add(OrderItem item) {
 

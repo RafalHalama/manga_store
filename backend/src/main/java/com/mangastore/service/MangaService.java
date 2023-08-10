@@ -1,9 +1,6 @@
 package com.mangastore.service;
 
-import com.mangastore.dao.CategoryRepository;
-import com.mangastore.dao.MangaRepository;
-import com.mangastore.dao.OrderItemRepository;
-import com.mangastore.dao.OrdersRepository;
+import com.mangastore.dao.*;
 import com.mangastore.dto.Purchase;
 import com.mangastore.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +19,14 @@ public class MangaService {
     CategoryRepository categoryRepository;
     OrderItemRepository orderItemRepository;
     OrdersRepository ordersRepository;
+    UserRepository userRepository;
     @Autowired
-    public MangaService(MangaRepository repository, CategoryRepository categoryRepository, OrderItemRepository orderItemRepository, OrdersRepository ordersRepository){
+    public MangaService(MangaRepository repository, CategoryRepository categoryRepository, OrderItemRepository orderItemRepository,UserRepository userRepository, OrdersRepository ordersRepository){
         this.repository = repository;
         this.categoryRepository = categoryRepository;
         this.ordersRepository = ordersRepository;
         this.orderItemRepository = orderItemRepository;
+        this.userRepository = userRepository;
     }
 
     public Optional<Manga> getManga(Long id) {
@@ -42,6 +41,8 @@ public class MangaService {
     }
 
     public void saveOrders(Purchase purchase) {
+        User user = this.userRepository.findByEmail(purchase.getEmail());
+        user.add(purchase.getOrders());
          this.ordersRepository.save(purchase.getOrders());
         for(OrderItem ot: purchase.getOrderItems()) {
             purchase.getOrders().add(ot);

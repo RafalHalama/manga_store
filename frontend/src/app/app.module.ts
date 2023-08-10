@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from './services/auth-guard.service';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     RedirectComponent,
     LoginComponent,
     RegisterComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,
